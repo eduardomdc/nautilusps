@@ -98,10 +98,13 @@ AUV Showcase""")
         if (choice.isdigit()):
                 if (int(choice) >= 1 and int(choice) <= len(auvList)):
                         print(auvList[int(choice)-1])
-                print("press enter to return to main menu")
-                input()
-                clear()
-                mainMenu()
+                        print("press enter to return to main menu")
+                        input()
+                        clear()
+                        mainMenu()
+                else:
+                        clear()
+                        mainMenu("\033[31mInvalid input...\033[0m")
         else:
                 clear()
                 mainMenu("\033[31mInvalid input...\033[0m")
