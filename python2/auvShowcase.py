@@ -71,43 +71,44 @@ def sortAuvYear(auvList):
 def sortAuvTeamSize(auvList):
         auvList.sort(key= lambda auv: auv.teamSize, reverse=True)
 
-def mainMenu(msg=''):
-        clear()
-        print("\033[94m") #print em azul
-        print("""
+def mainMenu():
+        msg = ''
+        while True:
+                clear()
+                print("\033[94m") #print em azul
+                print("""
 Welcome to
 ░▒█▄░▒█░█▀▀▄░█░▒█░▀█▀░░▀░░█░░█░▒█░█▀▀
 ░▒█▒█▒█░█▄▄█░█░▒█░░█░░░█▀░█░░█░▒█░▀▀▄
 ░▒█░░▀█░▀░░▀░░▀▀▀░░▀░░▀▀▀░▀▀░░▀▀▀░▀▀▀
 AUV Showcase""")
-        print(msg)
-        print("\033[0m") #retornar cor do terminal
-        print("Please choose an AUV")
-        for i in range(len(auvList)):
-                print(f"{str(i+1)} - {auvList[i].name}  ({auvList[i].year}/{auvList[i].teamSize} members)")
-        print("\033[94mOr enter 'y' to sort by AUVs by year\n't' to sort by team size\033[0m")
-        choice = input()
-        if (choice == 'y'):
-                sortAuvYear(auvList)
-                clear()
-                mainMenu()
-        elif (choice == 't'):
-                sortAuvTeamSize(auvList)
-                clear()
-                mainMenu()
-        if (choice.isdigit()):
-                if (int(choice) >= 1 and int(choice) <= len(auvList)):
-                        print(auvList[int(choice)-1])
-                        print("press enter to return to main menu")
-                        input()
+                print(msg)
+                print("\033[0m") #retornar cor do terminal
+                print("Please choose an AUV")
+                for i in range(len(auvList)):
+                        print(f"{str(i+1)} - {auvList[i].name}  ({auvList[i].year}/{auvList[i].teamSize} members)")
+                print("\033[94mOr enter 'y' to sort by AUVs by year\n't' to sort by team size\n'q' to quit\033[0m")
+                choice = input()
+                if (choice == 'y'):
+                        sortAuvYear(auvList)
+                        msg = ''
+                elif (choice == 't'):
+                        sortAuvTeamSize(auvList)
+                        msg = ''
+                elif (choice == 'q'):
                         clear()
-                        mainMenu()
+                        return 0
                 else:
-                        clear()
-                        mainMenu("\033[31mInvalid input...\033[0m")
-        else:
-                clear()
-                mainMenu("\033[31mInvalid input...\033[0m")
+                        if (choice.isdigit()):
+                                if (int(choice) >= 1 and int(choice) <= len(auvList)):
+                                        print(auvList[int(choice)-1])
+                                        print("press enter to return to main menu")
+                                        input()
+                                        msg=''
+                                else:
+                                        msg="\033[31mInvalid input...\033[0m"
+                        else:
+                                msg="\033[31mInvalid input...\033[0m"
 
 
 mainMenu()
