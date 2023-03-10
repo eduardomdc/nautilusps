@@ -102,7 +102,7 @@ AUV Showcase""")
                 print("Please choose an AUV")
                 for i in range(len(auvList)):
                         print(f"{str(i+1)} - {auvList[i].name}  ({auvList[i].year}/{auvList[i].teamSize} members)")
-                print("\033[34m'y' to sort by AUVs by year\n't' to sort by team size\n'q' to quit\033[0m")
+                print("\033[34m'y' to sort AUVs by year\n't' to sort by team size\n'q' to quit\033[0m")
                 choice = input()
                 if (choice == 'y'):
                         sortAuvYear(auvList)
