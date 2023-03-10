@@ -34,6 +34,7 @@ Frame: {self.frame}
 Housing: {self.housing}
 Battery: {self.battery}
 Camera: {self.camera}
+Thrusters: {self.nThrusters} {self.Thruster}
 \033[32m---Sensors---
 """             
                 for item in self.sensors:
