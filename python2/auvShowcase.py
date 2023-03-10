@@ -25,7 +25,21 @@ class Auv:
                 self.camera = camera
                 self.teamSize = teamSize
         def __repr__(self):
-                return self.name
+                text = f"""
+\033[34m{self.name}\033[0m
+Production Year: {self.year}
+Team Size: {self.teamSize}\033[36m
+--Structure--
+Frame: {self.frame}
+Housing: {self.housing}
+Battery: {self.battery}
+Camera: {self.camera}
+\033[32m---Sensors---
+"""             
+                for item in self.sensors:
+                        text += item+'\n'
+                text += '\033[0m'
+                return text
         
         def getYear(self):
                 return self.year
@@ -75,7 +89,7 @@ def mainMenu():
         msg = ''
         while True:
                 clear()
-                print("\033[94m") #print em azul
+                print("\033[34m") #print em azul
                 print("""
 Welcome to
 ░▒█▄░▒█░█▀▀▄░█░▒█░▀█▀░░▀░░█░░█░▒█░█▀▀
@@ -87,7 +101,7 @@ AUV Showcase""")
                 print("Please choose an AUV")
                 for i in range(len(auvList)):
                         print(f"{str(i+1)} - {auvList[i].name}  ({auvList[i].year}/{auvList[i].teamSize} members)")
-                print("\033[94mOr enter 'y' to sort by AUVs by year\n't' to sort by team size\n'q' to quit\033[0m")
+                print("\033[34m'y' to sort by AUVs by year\n't' to sort by team size\n'q' to quit\033[0m")
                 choice = input()
                 if (choice == 'y'):
                         sortAuvYear(auvList)
@@ -101,6 +115,7 @@ AUV Showcase""")
                 else:
                         if (choice.isdigit()):
                                 if (int(choice) >= 1 and int(choice) <= len(auvList)):
+                                        clear()
                                         print(auvList[int(choice)-1])
                                         print("press enter to return to main menu")
                                         input()
