@@ -1,0 +1,72 @@
+solar: 
+  sun: 
+    name: "sun"
+    parent: "world"
+  mercury:
+    name: "mercury"
+    parent: "sun"
+    orbit-radius: 6
+    orbit-period: 9
+  venus:
+    name: "venus"
+    parent: "sun"
+    orbit-radius: 10
+    orbit-period: 22
+  earth: 
+    name: "earth"
+    parent: "sun"
+    orbit-radius: 15 #*10^7 km ~ real scales
+    orbit-period: 35 #*10 days
+    moons:
+      moon:
+        parent: "earth"
+        name: "moon"
+        orbit-radius: 0.2
+        orbit-period: 3
+  mars:
+    name: "mars"
+    parent: "sun"
+    orbit-radius: 23
+    orbit-period: 68
+  jupiter:
+    name: "jupiter"
+    parent: "sun"
+    orbit-radius: 78
+    orbit-period: 420 # orbital period is 12 years, not a joke
+    moons:
+      ganymede:
+        name: "ganymede" # jupiter moons out of scale! they're too fast
+        parent: "jupiter"
+        orbit-radius: 2
+        orbit-period: 7
+      europa:
+        name: "europa"
+        parent: "jupiter"
+        orbit-radius: 1.5
+        orbit-period: 4
+  saturn:
+    name: "saturn"
+    parent: "sun"
+    orbit-radius: 143
+    orbit-period: 1015
+    moons:
+      titan:
+        name: "titan"
+        parent: "saturn"
+        orbit-radius: 0.25
+        orbit-period: 1.5
+  uranus:
+    name: "uranus"
+    parent: "sun"
+    orbit-radius: 288
+    orbit-period: 2940
+  neptune:
+    name: "neptune"
+    parent: "sun"
+    orbit-radius: 450
+    orbit-period: 5775
+  pluto:
+    name: "pluto"
+    parent: "sun"
+    orbit-radius: 591
+    orbit-period: 8680

@@ -1,0 +1,4 @@
+<launch>
+    <node pkg="solar" type="solar.py" name="solar_tf_broadcaster"/>
+    <rosparam command="load" file="$(find solar)/param/solar.yaml"/>
+</launch>
